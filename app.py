@@ -8,7 +8,7 @@ from mysql.connector import (connection)
 import flask_excel as excel
 from io import BytesIO
 import re
-mydb=connection.MySQLConnection(user='root',password='admin',host='localhost',db='snm2456db')
+mydb=connection.MySQLConnection(user='flaskuser',password='password',host='localhost',db='flaskdb')
 app=Flask(__name__)
 excel.init_excel(app)
 app.config['SESSION_TYPE']='filesystem'
@@ -436,4 +436,5 @@ def newpassword(userdata):
             flash('password updated successfully')
             return jsonify({"message":"password updted successfully"})
     return render_template('newpassword.html',userdata=userdata)
-app.run(debug=True,use_reloader=True)                                                                                    
+if __name__=='__main__':
+    app.run()                                                                                    
